@@ -1,0 +1,9 @@
+# <%= $::template_header %>
+search <%= @search %>
+<% if @add_localhost -%>
+nameserver 127.0.0.1
+<% end -%>
+nameserver <%= @nameserver1 %>
+<% if @nameserver2 != '' -%>
+nameserver <%= @nameserver2 %>
+<% end -%>
