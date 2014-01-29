@@ -1,4 +1,4 @@
-# <%= $::template_header %>
+# <%= scope.lookupvar('::template_header') %>
 search <%= @search %>
 <% if @add_localhost -%>
 nameserver 127.0.0.1
