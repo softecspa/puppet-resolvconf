@@ -26,8 +26,8 @@ class resolvconf (
 ) {
 
   $resolvconf_path= $::lsbdistcodename? {
-    'precise' => '/run/resolvconf/resolv.conf',
-    default   => '/etc/resolv.conf',
+    'lucid' => '/etc/resolv.conf',
+    default => '/run/resolvconf/resolv.conf',
   }
 
   file {$resolvconf_path:
