@@ -26,18 +26,19 @@ class resolvconf (
 ) {
 
   $resolvconf_path = $::lsbdistcodename? {
-    'lucid' => '/etc/resolv.conf',
-    default => '/run/resolvconf/resolv.conf',
+    'lucid'  => '/etc/resolv.conf',
+    'wheezy' => '/etc/resolv.conf',
+    default  => '/run/resolvconf/resolv.conf',
   }
 
-  notify{ "value of \$resolvconf_path is: ${resolvconf_path}": }
+  # notify{ "value of \$resolvconf_path is: ${resolvconf_path}": }
 
-  file {$resolvconf_path:
+  file { $resolvconf_path:
     ensure  => present,
-    mode    => 644,
+    mode    => '0644',
     owner   => root,
     group   => root,
-    content => template("resolvconf/resolv.conf.erb"),
+    content => template('resolvconf/resolv.conf.erb'),
   }
 
 }
