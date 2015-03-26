@@ -25,10 +25,12 @@ class resolvconf (
   $nameserver2 = '',
 ) {
 
-  $resolvconf_path= $::lsbdistcodename? {
+  $resolvconf_path = $::lsbdistcodename? {
     'lucid' => '/etc/resolv.conf',
     default => '/run/resolvconf/resolv.conf',
   }
+
+  notify{ "value of \$resolvconf_path is: ${resolvconf_path}": }
 
   file {$resolvconf_path:
     ensure  => present,
